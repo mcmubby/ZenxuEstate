@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace Zenxu.Data.Entities
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
-        
+
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Zenxu.Data.DatabaseContexts.ApplicationDbContext;
 using Zenxu.Data.DatabaseContexts.AuthenticationDbContext;
 
 namespace zenxu
@@ -26,7 +27,16 @@ namespace zenxu
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AuthenticationDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection"), 
+                sqlSeverOptions => {
+                    sqlSeverOptions.MigrationsAssembly("Zenxu.Data");
+            }));
+            services.AddDbContextPool<ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationConnection"),
+                sqlServerOptions => {
+                    sqlServerOptions.MigrationsAssembly("Zenxu.Data");
+                })
+            );
             services.AddControllersWithViews();
         }
 

@@ -6,12 +6,13 @@ namespace zenxu.Models.Account
     public class RegisterModel
     {
         [Required]
-        [DisplayName("Fullname")]
+        [DisplayName("Name")]
         public string FullName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
         [DisplayName("Email Address")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

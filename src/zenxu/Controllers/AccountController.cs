@@ -1,4 +1,6 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
+using zenxu.Models.Account;
 
 namespace zenxu.Controllers
 {
@@ -10,10 +12,24 @@ namespace zenxu.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult login(LoginModel model)
+        {
+            if(!ModelState.IsValid) return View();
+            throw new NotImplementedException();
+        }
+
         [HttpGet]
         public IActionResult register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult register(RegisterModel model)
+        {
+            if(!ModelState.IsValid) return View();
+            throw new NotImplementedException();
         }
     }
 }

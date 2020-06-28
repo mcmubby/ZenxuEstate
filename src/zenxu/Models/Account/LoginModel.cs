@@ -8,6 +8,7 @@ namespace zenxu.Models.Account
         [Required]
         [DataType(DataType.EmailAddress)]
         [DisplayName("Email Address")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

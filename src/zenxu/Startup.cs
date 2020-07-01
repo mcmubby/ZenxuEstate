@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using zenxu.Interfaces;
+using zenxu.Services;
 using Zenxu.Data.DatabaseContexts.ApplicationDbContext;
 using Zenxu.Data.DatabaseContexts.AuthenticationDbContext;
 using Zenxu.Data.Entities;
@@ -55,6 +57,8 @@ namespace zenxu
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
             services.AddControllersWithViews();
+
+            services.AddTransient<IAccountsService, AccountsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

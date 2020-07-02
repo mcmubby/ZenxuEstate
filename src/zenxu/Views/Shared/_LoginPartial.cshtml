@@ -1,0 +1,24 @@
+@using Microsoft.AspNetCore.Identity
+@using Zenxu.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form method = "Get">
+        <div class="button navbar-right">
+            <button class="navbar-btn nav-button wow bounceInRight login" asp-action="logout" asp-controller="Account" data-wow-delay="0.4s">Logout</button>
+        </div>
+    </form>
+}
+
+else{
+    <form method = "Get">
+    <div class="button navbar-right">
+        <button class="navbar-btn nav-button wow bounceInRight login" asp-action="login" asp-controller="Account" data-wow-delay="0.4s">Login</button>
+        <button class="navbar-btn nav-button wow fadeInRight" asp-action="register" asp-controller="Account" data-wow-delay="0.5s">Register</button>
+    </div>
+    </form>
+}
+
+

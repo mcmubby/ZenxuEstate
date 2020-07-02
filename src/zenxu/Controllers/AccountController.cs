@@ -50,6 +50,13 @@ namespace zenxu.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> logout()
+        {
+            await _signInManager.SignOutAsync();
+            return LocalRedirect("~/");
+        }
+
+        [HttpGet]
         public IActionResult register()
         {
             return View();

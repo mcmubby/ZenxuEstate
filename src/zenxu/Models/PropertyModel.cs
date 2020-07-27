@@ -1,6 +1,6 @@
-namespace Zenxu.Data.Entities
+namespace zenxu.Models
 {
-    public class Property : BaseEntity
+    public class PropertyModel
     {
         public string Title { get; set; }
         public string ImageURL { get; set; }

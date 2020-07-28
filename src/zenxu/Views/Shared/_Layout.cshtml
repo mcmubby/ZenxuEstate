@@ -404,6 +404,19 @@
         <script src="~/assets/js/wizard.js"></script>
 
         <script src="~/assets/js/main.js"></script>
+        <script>
+                    function Agreement(){
+                        var agree = document.getElementById('ag');
+                        const result = console.log(agree.checked);
+                        if(agree.checked === false){
+                            var x = document.getElementById('gogo');
+                            x.disabled = true;
+                        }
+                        else{
+                            var x = document.getElementById('gogo');
+                            x.disabled = false;}
+                    }
+                </script>
 
     </body>
 </html>

@@ -1,3 +1,5 @@
+@model zenxu.Models.PropertyModel
+
 <div class="page-head"> 
     <div class="container">
         <div class="row">
@@ -16,7 +18,7 @@
             <div class="wizard-container"> 
 
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="" method="">                        
+                    <form action="Add" method="Post">                        
                         <div class="wizard-header">
                             <h3>
                                 <b>Submit</b> YOUR PROPERTY <br>
@@ -47,16 +49,16 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Property name <small>(required)</small></label>
-                                            <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                                            <input  asp-for="Title" type="text" class="form-control" placeholder="Super villa ...">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Property price <small>(required)</small></label>
-                                            <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
+                                            <input  asp-for="Price" type="text" class="form-control" placeholder="3330000">
                                         </div> 
                                         <div class="form-group">
                                             <label>Telephone <small>(empty if you wanna use default phone number)</small></label>
-                                            <input name="phone" type="text" class="form-control" placeholder="+1 473 843 7436">
+                                            <input  type="text" asp-for="ContantPhoneNumber" class="form-control" placeholder="+1 473 843 7436">
                                         </div>
                                     </div>
                                 </div>
@@ -64,13 +66,13 @@
                             <!--  End step 1 -->
 
                             <div class="tab-pane" id="step2">
-                                <h4 class="info-text"> How much your Property is Beautiful ? </h4>
+                                <h4 class="info-text"> How Beautiful is Your Property </h4>
                                 <div class="row">
                                     <div class="col-sm-12"> 
                                         <div class="col-sm-12"> 
                                             <div class="form-group">
                                                 <label>Property Description :</label>
-                                                <textarea name="discrition" class="form-control" ></textarea>
+                                                <textarea asp-for="Description" class="form-control" ></textarea>
                                             </div> 
                                         </div> 
                                     </div>
@@ -108,8 +110,8 @@
                                                 <select id="basic" class="selectpicker show-tick form-control">
                                                     <option> -Status- </option>
                                                     <option>Rent </option>
-                                                    <option>Boy</option>
-                                                    <option>used</option>  
+                                                    <option>Buy</option>
+                                                    
 
                                                 </select>
                                             </div>
@@ -127,38 +129,49 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 padding-top-15">                                                   
+                                    <div class="col-sm-12 padding-top-15">   
+                                        <div class="col-sm-4">
+
+                                            <div class="form-group">
+                                                <label for="price-range">Number of Toilets :</label>
+                                                <input type="number" class="span2" asp-for="NumberOfToilets"  data-slider-min="1" 
+                                                       data-slider-max="13" data-slider-step="1" 
+                                                       data-slider-value="" id="min-baths" ><br />
+                                                <b class="pull-left color">1</b> 
+                                                <b class="pull-right color">13</b>
+                                            </div>
+                                            
+                                        </div>                                                 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label for="property-geo">Min bed :</label>
-                                                <input type="text" class="span2" value="" data-slider-min="0" 
-                                                       data-slider-max="600" data-slider-step="5" 
-                                                       data-slider-value="[250,450]" id="min-bed" ><br />
+                                                <label for="property-geo">Number of Rooms :</label>
+                                                <input type="number" asp-for="NumberOfRooms" class="span2" 
+                                                       data-slider-max="12" data-slider-step="1" 
+                                                       data-slider-value="" id="min-bed" ><br />
                                                 <b class="pull-left color">1</b> 
-                                                <b class="pull-right color">120</b>
+                                                <b class="pull-right color">12</b>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label for="price-range">Min baths :</label>
-                                                <input type="text" class="span2" value="" data-slider-min="0" 
-                                                       data-slider-max="600" data-slider-step="5" 
-                                                       data-slider-value="[250,450]" id="min-baths" ><br />
+                                                <label for="price-range">Number of Baths :</label>
+                                                <input type="number" class="span2" asp-for="NumberOfBaths"  
+                                                       data-slider-max="13" data-slider-step="1" 
+                                                       data-slider-value="" id="min-baths" ><br />
                                                 <b class="pull-left color">1</b> 
-                                                <b class="pull-right color">120</b>
+                                                <b class="pull-right color">13</b>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label for="property-geo">Property geo (m2) :</label>
-                                                <input type="text" class="span2" value="" data-slider-min="0" 
-                                                       data-slider-max="600" data-slider-step="5" 
-                                                       data-slider-value="[50,450]" id="property-geo" ><br />
-                                                <b class="pull-left color">40m</b> 
-                                                <b class="pull-right color">12000m</b>
+                                                <label for="price-range">Number of Toilets :</label>
+                                                <input type="number" class="span2" data-slider-max="13" data-slider-step="1" data-slider-value="" id="min-baths" />
+                                                <br />
+                                                
                                             </div>
+                                            
                                         </div>   
                                     </div>
                                     <div class="col-sm-12 padding-top-15">
@@ -251,6 +264,10 @@
                                             <input class="form-control" type="file" id="property-images">
                                             <p class="help-block">Select multipel images for your property .</p>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Address :</label>
+                                            <textarea  asp-for="Address" class="form-control" ></textarea>
+                                        </div> 
                                     </div>
                                     <div class="col-sm-6"> 
                                         <div class="form-group">
@@ -287,7 +304,7 @@
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" /> <strong>Accept termes and conditions.</strong>
+                                                    <input type="checkbox" id="ag" onclick="Agreement()" /> <strong>Accept termes and conditions.</strong>
                                                 </label>
                                             </div> 
 
@@ -302,7 +319,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+                                <input type='submit' class='btn btn-finish btn-primary ' id="gogo" disabled="disabled" name='finish' value='Finish'/>
                             </div>
 
                             <div class="pull-left">
@@ -312,6 +329,7 @@
                         </div>	
                     </form>
                 </div>
+                
                 <!-- End submit form -->
             </div> 
         </div>

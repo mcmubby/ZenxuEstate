@@ -12,6 +12,25 @@ $(document).ready(function () {
         increaseArea: '20%' // optional
     });
 
+    $("#gogo").load(function (){
+        $('#gogo').attr("disabled", true);
+    });
+
+    $("#ag").on("ifChanged", Agreement);
+
+    function Agreement(){
+        var agree = document.getElementById('ag');
+        console.log(agree.checked);
+        if(agree.checked === false){
+     
+            $('#gogo').attr("disabled",true);
+        }
+        else{
+     
+            $('#gogo').attr("disabled",false);
+        };
+    };
+
 
     $('.layout-grid').on('click', function () {
         $('.layout-grid').addClass('active');

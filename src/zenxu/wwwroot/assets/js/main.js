@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     function Agreement(){
         var agree = document.getElementById('ag');
-        console.log(agree.checked);
+        
         if(agree.checked === false){
      
             $('#gogo').attr("disabled",true);

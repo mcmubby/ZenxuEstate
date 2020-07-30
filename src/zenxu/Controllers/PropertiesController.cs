@@ -1,12 +1,13 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using zenxu.Interfaces;
 using zenxu.Models;
 
 namespace zenxu.Controllers
 {
-    
+    [Authorize]
     public class PropertiesController : Controller
     {
         private readonly IPropertyService _property;
@@ -17,6 +18,7 @@ namespace zenxu.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var properties = _property.GetAllProperties();

@@ -1,1 +1,11 @@
-<h1>Property page</h1>
+@model IEnumerable<Zenxu.Data.Entities.Property>
+
+@if(Model is object)
+{
+    foreach (var propeety in Model)
+    {
+        <h1>@propeety.Title</h1>
+        <hr/>
+        <p>@propeety.Price</p>
+    }
+}

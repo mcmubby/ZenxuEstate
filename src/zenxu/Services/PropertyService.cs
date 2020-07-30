@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using zenxu.Interfaces;
 using zenxu.Models;
@@ -33,6 +34,11 @@ namespace zenxu.Services
             };
             await _context.AddAsync(property);
             await _context.SaveChangesAsync();
+        }
+
+        public IEnumerable<Property> GetAllProperties()
+        {
+            return _context.Properties;
         }
     }
 }

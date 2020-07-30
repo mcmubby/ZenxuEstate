@@ -19,7 +19,8 @@ namespace zenxu.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var properties = _property.GetAllProperties();
+            return View(properties);
         }
 
         

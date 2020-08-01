@@ -1,0 +1,35 @@
+version: "3.8"
+
+networks: 
+    zenxu-app-network:
+
+services: 
+    sqlserver:
+        image: "mcr.microsoft.com/mssql/server"
+        container_name: "sqlserver"
+        networks: 
+            - zenxu-app-network
+        restart: always
+        environment: 
+            - SA_PASSWORD=abc123
+            - ACCEPT_EULA=Y
+        ports: 
+            - "1433:1433"
+
+    
+    web:
+        container_name: web
+        image: web
+        build: 
+            context: .
+            dockerfile: ./zenxu/Dockerfile
+        networks: 
+            - zenxu-app-network
+        restart: always
+        depends_on: 
+            - sqlserver
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports: 
+            - "5000:5000"
+            - "5001:5001"
